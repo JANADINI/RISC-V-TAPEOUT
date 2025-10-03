@@ -1,7 +1,7 @@
 # BabySoc Fundamentals & Functional Modelling
 <details>
 <summary>
-Understanding System-On-Chip(SoC):
+Fundamentals of System-On-Chip(SoC):
 </summary>
   
   A **System on a Chip (SoC)** is an integrated circuit that consolidates all essential components of a computing system into a **single chip**. Unlike traditional systems, where the CPU, memory, and peripherals are separate components connected through buses, an SoC combines these elements to achieve **compactness, energy efficiency, and high performance**.
