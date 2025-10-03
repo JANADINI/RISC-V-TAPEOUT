@@ -46,10 +46,36 @@ Detailed notes are in [`Theory/SoC_Fundamentals.md`](./Theory/SoC_Fundamentals.m
 ##  Part 2 – Labs (Hands-on Functional Modelling)  :
 
 ### Steps Performed  
-1. Clone the BabySoC project repo.  
+1. Clone the BabySoC project repo: 
    ```bash
    git clone https://github.com/<your-username>/BabySoC_Week2.git
    cd BabySoC_Week2/Labs
+   ---
+2. Compile Verilog modules using Icarus Verilog:
+   ```bash
+   iverilog -o baby_soc_sim BabySoC.v Testbench.v
+vvp baby_soc_sim
+
+---
+3. Generate .vcd file for waveform analysis.
+
+4. Open .vcd in GTKWave:
+   
+  ```bash
+ gtkwave dump.vcd
+---
+# Observe and analyze:
+
+- Reset operation
+
+- Clocking behaviour
+
+- Dataflow between modules
+
+
+
+   
+
 
 
 
