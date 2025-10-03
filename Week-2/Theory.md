@@ -58,7 +58,7 @@ Modern devices such as **smartphones, tablets, smartwatches, and embedded IoT de
 **Visual Representation:**
 Here’s a simple SoC block diagram for better understanding:  
 
-![SoC Block Diagram](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/ARM_SOC_block_diagram.svg/1200px-ARM_SOC_block_diagram.svg.png)
+![SoC Block Diagram](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Pictures/SoC_Design_Flow.jpeg))
 
 ---
 # Advantages of System-on-Chip (SoC)
