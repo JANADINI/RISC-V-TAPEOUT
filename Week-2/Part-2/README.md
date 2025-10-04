@@ -308,7 +308,8 @@ found and reported 0 problems.
 
 yosys> 
 
-```yosys> opt
+```bash
+yosys> opt
 
 13. Executing OPT pass (performing simple optimizations).
 
@@ -387,6 +388,71 @@ Optimizing module vsdbabysoc.
 yosys> 
 ```
 ```bash
+17. Printing statistics.
+
+=== vsdbabysoc ===
+
+   Number of wires:               4278
+   Number of wire bits:           4380
+   Number of public wires:        4278
+   Number of public wire bits:    4380
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               4298
+     sky130_fd_sc_hd__a211oi_1      20
+     sky130_fd_sc_hd__a21boi_0      59
+     sky130_fd_sc_hd__a21o_2        27
+     sky130_fd_sc_hd__a21oi_1      202
+     sky130_fd_sc_hd__a22oi_1       36
+     sky130_fd_sc_hd__a2bb2oi_1      1
+     sky130_fd_sc_hd__a311oi_1       1
+     sky130_fd_sc_hd__a31o_2         4
+     sky130_fd_sc_hd__a31oi_1       49
+     sky130_fd_sc_hd__a32oi_1        5
+     sky130_fd_sc_hd__a41oi_1       27
+     sky130_fd_sc_hd__and2_2        24
+     sky130_fd_sc_hd__and2b_2        1
+     sky130_fd_sc_hd__and3_2        16
+     sky130_fd_sc_hd__and3b_2        1
+     sky130_fd_sc_hd__clkinv_1     449
+     sky130_fd_sc_hd__dfrtp_1       20
+     sky130_fd_sc_hd__lpflow_inputiso0p_1      5
+     sky130_fd_sc_hd__maj3_1         2
+     sky130_fd_sc_hd__nand2_1      943
+     sky130_fd_sc_hd__nand3_1      881
+     sky130_fd_sc_hd__nand3b_1      30
+     sky130_fd_sc_hd__nand4_1      220
+     sky130_fd_sc_hd__nor2_1       502
+     sky130_fd_sc_hd__nor3_1        55
+     sky130_fd_sc_hd__nor3b_1        5
+     sky130_fd_sc_hd__nor4_1        23
+     sky130_fd_sc_hd__o2111a_1      29
+     sky130_fd_sc_hd__o2111ai_1     17
+     sky130_fd_sc_hd__o211a_1       21
+     sky130_fd_sc_hd__o211ai_1      67
+     sky130_fd_sc_hd__o21a_1        58
+     sky130_fd_sc_hd__o21ai_0      248
+     sky130_fd_sc_hd__o21bai_1      23
+     sky130_fd_sc_hd__o221ai_1       1
+     sky130_fd_sc_hd__o22a_2         1
+     sky130_fd_sc_hd__o22ai_1       46
+     sky130_fd_sc_hd__o2bb2ai_1     65
+     sky130_fd_sc_hd__o31ai_1        5
+     sky130_fd_sc_hd__o41ai_1        1
+     sky130_fd_sc_hd__or2_2         11
+     sky130_fd_sc_hd__or2b_2         3
+     sky130_fd_sc_hd__xnor2_1       30
+     sky130_fd_sc_hd__xnor3_4       23
+     sky130_fd_sc_hd__xor2_1        38
+     sky130_fd_sc_hd__xor3_4         3
+
+18. Executing Verilog backend.
+Dumping module `\vsdbabysoc'.
+
+yosys> 
+
+```
 
 ---
 
