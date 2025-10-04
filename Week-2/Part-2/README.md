@@ -153,7 +153,8 @@ cd /home/janadinisk/vsd/VLSI/VSDBabySoC
 ```
 
 ### Run synthesis commands inside `yosys` utility
-
+Yosys:
+![image]()
 
 
 ```bash
