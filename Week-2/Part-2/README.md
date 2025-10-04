@@ -9,12 +9,12 @@ This guide provides step-by-step instructions to explore the functional modeling
 1. [Clone the VSDBabySoC Repository](#clone-the-vsdbabysoc-repository)
 2. [Explore Repository Structure](#explore-repository-structure)
 3. [Verilog RTL Modules](#verilog-rtl-modules)
-4. [Simulating RTL Modules](#simulating-rtl-modules)
+4. [Simulating RTL Modules](#simulating-individual-rtl-modules)
 5. [Pre-synthesis Simulation](#pre-synthesis-simulation)
 6. [Signal Analysis](#signal-analysis)
 7. [Post-synthesis Simulation](#post-synthesis-simulation)
 8. [Comparison: Pre- vs Post-synthesis](#comparison-pre--vs-post-synthesis)
-9. [Summary](#summary)
+9. [Summary & Special Features](#summary--special-features)
 
 ---
 
@@ -34,7 +34,8 @@ Confirm contents by listing files:
 ```bash
 ls
 ```
-> **Tip:** Keep your SoC projects organized in dedicated folders like `/home/janadinisk/vsd/VLSI/` to easily manage multiple designs and versions.
+> [!Tip]
+>  Keep your SoC projects organized in dedicated folders like `/home/janadinisk/vsd/VLSI/` to easily manage multiple designs and versions.
 
 ---
 ## Explore Repository Structure
@@ -55,7 +56,8 @@ VSDBabySoC/
 ├── include/ # Header files for synthesis and compilation
 └── gls_model/ # Standard cells and primitives
 ```
-> **Note:** Separation of source code, headers, and libraries promotes maintainability and simplifies simulation & synthesis workflows.
+> [!Note]
+> Separation of source code, headers, and libraries promotes maintainability and simplifies simulation & synthesis workflows.
 
 ---
 
@@ -87,7 +89,8 @@ vvp /home/janadinisk/vsd/VLSI/avsddac.vvp
 gtkwave /home/janadinisk/vsd/VLSI/tb_avsddac.vcd
 ```
 
-> **Tip:** Visualizing waveform outputs with GTKWave helps understand signal transitions and verify expected hardware behaviors.
+> [!Tip]
+>  Visualizing waveform outputs with GTKWave helps understand signal transitions and verify expected hardware behaviors.
 
 Repeat similar steps for the PLL (`avsdpll.v`) and CPU core (`rvmyth.v`) modules with their respective testbenches.
 
@@ -120,7 +123,10 @@ Key simulation signals to observe:
 - **OUT & RV_TO_DAC[9:0]:** Verify output correctness aligning with program logic.
 - **Analog Signal (OUT real):** Note you simulate analog behavior using `real` datatype approximations, which helps bridge digital design with analog interfacing.
 
-> **Special Feature:** The DAC modeled with real-number arithmetic is a unique educational aspect, allowing visualization of analog voltage levels directly computed from digital values.
+**Special Feature**:
+
+<mark> The DAC modeled with real-number arithmetic is a unique educational aspect, allowing visualization of analog voltage levels directly computed from digital values.
+</mark>
 
 ---
 
@@ -193,14 +199,18 @@ Run and view waveform:
 vvp /home/janadinisk/vsd/VLSI/vsdbabysoc_synth.vvp
 gtkwave /home/janadinisk/vsd/VLSI/post_synth_sim.vcd
 ```
-> **Tip:** Post-synthesis simulation validates synthesis results and timing, ensuring your design behaves identically to the RTL model after optimization.
+> [!Tip]
+> Post-synthesis simulation validates synthesis results and timing, ensuring your design behaves identically to the RTL model after optimization.
 ---
 
 ## Comparison: Pre- vs Post-synthesis
 
 Both pre-synthesis and post-synthesis simulations align well, confirming that the design works correctly after synthesis.
 
-> **Highlight:** The close match between pre- and post-synthesis simulation results proves design integrity and correctness, fundamental for production-quality SoC development.
+**Highlight**:
+
+<mark>
+The close match between pre- and post-synthesis simulation results proves design integrity and correctness, fundamental for production-quality SoC development.</mark>
 
 ---
 
@@ -216,9 +226,11 @@ BabySoC integrates key SoC concepts in a simplified, student-friendly package:
 - Open-source approach facilitating experimentation and learning.
 - Encouragement to explore SoC modeling beyond theory, unlocking skills for real-world chip design.
 
-> **Pro Tip:** Regularly check signal waveforms and simulation logs to catch issues early. Use GTKWave’s measurement tools for timing analysis and signal verification.
+> [!Tip]
+> Regularly check signal waveforms and simulation logs to catch issues early. Use GTKWave’s measurement tools for timing analysis and signal verification.
 
-> **Final Note:** This project enables beginners and enthusiasts to transition smoothly from SoC theory to practical implementation and verification, a crucial step in embedded and VLSI careers.
+> [!Note]
+> his project enables beginners and enthusiasts to transition smoothly from SoC theory to practical implementation and verification, a crucial step in embedded and VLSI careers.
 
 ---
 
