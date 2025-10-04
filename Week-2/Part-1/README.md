@@ -36,6 +36,7 @@ BabySoC is a simplified, hands-on SoC platform designed for education. It demons
 ## What is a System-on-Chip (SoC)?
 
 A System-on-Chip (SoC) integrates CPU, memory, communication controllers, and input/output peripherals on a single chip. SoCs power everything from smartphones and IoT devices to embedded controllers.
+![image](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part-1/Pictures/SoC.jpeg)
 
 ---
 
