@@ -86,7 +86,7 @@ A System-on-Chip (SoC) integrates CPU, memory, communication controllers, and in
 4. **Verification:** Simulate and test for functional correctness.
 5. **Physical Design:** Convert design to silicon layout.
 6. **Tape-Out:** Fabricate and test the physical chip.
-
+![image](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part-1/Pictures/SoC_Design_Flow.jpeg)
 ---
 
 ## About BabySoC
