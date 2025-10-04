@@ -106,14 +106,17 @@ BabySoC is a learning-focused SoC design, intentionally simplified to expose cor
 #### RVMYTH Processor
 
 - Simple RISC-V CPU, perfect for understanding processor basics and instruction flow.
+  ![image](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part-1/Pictures/RVMYTH_Processor.jpeg)
 
 #### 8x PLL (Phase-Locked Loop)
 
 - Generates a stable clock signal for synchronizing all digital components.
+  ![image](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part-1/Pictures/8xPLL(Phase_Locked_Loop).jpeg)
 
 #### 10-bit DAC
 
 - Converts digital outputs from CPU to analog voltages for real-world interfacing.
+  ![image](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part-1/Pictures/10_Bit-DAC.jpeg)
 
 ---
 
