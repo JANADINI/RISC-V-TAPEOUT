@@ -176,7 +176,139 @@ stat
 write_verilog -noattr /home/janadinisk/vsd/VLSI/vsdbabysoc_synth.v
 ```
 
+```bash
+Printing statistics.
 
+=== avsddac ===
+
+   Number of wires:               5299
+   Number of wire bits:           5411
+   Number of public wires:           6
+   Number of public wire bits:     118
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               5325
+     $_ANDNOT_                    1189
+     $_AND_                         84
+     $_AOI3_                       335
+     $_AOI4_                         3
+     $_MUX_                        645
+     $_NAND_                       154
+     $_NOR_                        381
+     $_NOT_                        307
+     $_OAI3_                       256
+     $_OAI4_                         5
+     $_ORNOT_                      183
+     $_OR_                         544
+     $_XNOR_                       282
+     $_XOR_                        957
+
+=== avsdpll ===
+
+   Number of wires:                  6
+   Number of wire bits:              6
+   Number of public wires:           5
+   Number of public wire bits:       5
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  2
+     $_ANDNOT_                       1
+     $_NAND_                         1
+
+=== rvmyth ===
+
+   Number of wires:                  4
+   Number of wire bits:             66
+   Number of public wires:           4
+   Number of public wire bits:      66
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  1
+     rvmyth_gen                      1
+
+=== rvmyth_gen ===
+
+   Number of wires:                168
+   Number of wire bits:            292
+   Number of public wires:           5
+   Number of public wire bits:      98
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                258
+     $_ANDNOT_                      14
+     $_AND_                          9
+     $_AOI3_                        23
+     $_DFF_PP0_                     64
+     $_NAND_                        26
+     $_NOR_                          4
+     $_NOT_                         17
+     $_OAI3_                        22
+     $_ORNOT_                        7
+     $_OR_                           9
+     $_XNOR_                        21
+     $_XOR_                         42
+
+=== vsdbabysoc ===
+
+   Number of wires:                 11
+   Number of wire bits:             71
+   Number of public wires:           9
+   Number of public wire bits:      18
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  3
+     avsddac                         1
+     avsdpll                         1
+     rvmyth                          1
+
+=== design hierarchy ===
+
+   vsdbabysoc                        1
+     avsddac                         1
+     avsdpll                         1
+     rvmyth                          1
+       rvmyth_gen                    1
+
+   Number of wires:               5488
+   Number of wire bits:           5846
+   Number of public wires:          29
+   Number of public wire bits:     305
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               5585
+     $_ANDNOT_                    1204
+     $_AND_                         93
+     $_AOI3_                       358
+     $_AOI4_                         3
+     $_DFF_PP0_                     64
+     $_MUX_                        645
+     $_NAND_                       181
+     $_NOR_                        385
+     $_NOT_                        324
+     $_OAI3_                       278
+     $_OAI4_                         5
+     $_ORNOT_                      190
+     $_OR_                         553
+     $_XNOR_                       303
+     $_XOR_                        999
+
+10.27. Executing CHECK pass (checking for obvious problems).
+checking module avsddac..
+checking module avsdpll..
+checking module rvmyth..
+checking module rvmyth_gen..
+checking module vsdbabysoc..
+found and reported 0 problems.
+
+yosys> 
+
+```
 ---
 
 ### Post-synthesis Simulation
