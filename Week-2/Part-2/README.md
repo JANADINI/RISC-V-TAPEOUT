@@ -34,6 +34,8 @@ Confirm contents by listing files:
 ```bash
 ls
 ```
+> **Tip:** Keep your SoC projects organized in dedicated folders like `/home/janadinisk/vsd/VLSI/` to easily manage multiple designs and versions.
+
 ---
 ## Explore Repository Structure
 
@@ -43,34 +45,36 @@ VSDBabySoC/
 ├── LICENSE
 ├── Makefile
 ├── README.md
-├── images/
+├── images/ # Visualization assets
 └── src/
-├── module/
-│ ├── avsddac.v # DAC Module
-│ ├── avsdpll.v # PLL Module
-│ ├── rvmyth.tlv # RISC-V CPU Core source
-│ └── vsdbabysoc.v # Top-level module
-├── include/
-│ ├── sandpiper.vh
-│ ├── sandpiper_gen.vh
+├── module/ # Core Verilog and TL-Verilog design files
+│ ├── avsddac.v # 10-bit DAC module
+│ ├── avsdpll.v # PLL (clock generator)
+│ ├── rvmyth.tlv # RISC-V CPU core in TL-Verilog
+│ └── vsdbabysoc.v # Top-level integration module
+├── include/ # Header files for synthesis and compilation
+└── gls_model/ # Standard cells and primitives
 ```
+> **Note:** Separation of source code, headers, and libraries promotes maintainability and simplifies simulation & synthesis workflows.
 
 ---
 
 ## Verilog RTL Modules
 
-- **`avsddac.v`**: Digital-to-Analog Converter implementation.
-- **`avsdpll.v`**: Phase-Locked Loop for clock generation.
-- **`rvmyth.tlv`**: Behavioral RISC-V CPU core written in TL-Verilog.
-- **`vsdbabysoc.v`**: Top-level integration module combining CPU, PLL, DAC.
+- **`avsdpll.v`**: Contains the Phase-Locked Loop module that stabilizes and generates clock signals, critical for synchronized CPU and peripheral operation.
+  
+- **`rvmyth.tlv`**: The heart of BabySoC, a small RISC-V CPU core described in TL-Verilog, providing instruction execution and data generation.
+  
+- **`vsdbabysoc.v`**: The top-level module connecting CPU, PLL, and DAC modules, illustrating typical SoC integration.
 
 ---
 
-## Simulating RTL Modules
 
-### Compiling RTL Sources
+## Simulating Individual RTL Modules
 
-Before compiling, convert the TL-Verilog source:
+### Preparing the RISC-V Core
+
+Before simulating the CPU core, translate TL-Verilog into Verilog using:
 
 ```bash
 python3 -m sandpiper -i /home/janadinisk/vsd/VLSI/VSDBabySoC/src/module/rvmyth.tlv -o rvmyth.v --bestsv --noline -p verilog --outdir /home/janadinisk/vsd/VLSI/VSDBabySoC/src/module
@@ -83,7 +87,9 @@ vvp /home/janadinisk/vsd/VLSI/avsddac.vvp
 gtkwave /home/janadinisk/vsd/VLSI/tb_avsddac.vcd
 ```
 
-Similarly, compile and simulate other modules (`avsdpll.v`, `rvmyth.v`) with appropriate testbenches.
+> **Tip:** Visualizing waveform outputs with GTKWave helps understand signal transitions and verify expected hardware behaviors.
+
+Repeat similar steps for the PLL (`avsdpll.v`) and CPU core (`rvmyth.v`) modules with their respective testbenches.
 
 ---
 
@@ -109,12 +115,12 @@ gtkwave /home/janadinisk/vsd/VLSI/pre_synth_sim.vcd
 ## Signal Analysis
 
 Key simulation signals to observe:
+- **CLK (Clock signal):** Check for stable, periodic toggling that drives synchronous components.
+- **reset:** Confirm it properly initializes or clears registers before operation.
+- **OUT & RV_TO_DAC[9:0]:** Verify output correctness aligning with program logic.
+- **Analog Signal (OUT real):** Note you simulate analog behavior using `real` datatype approximations, which helps bridge digital design with analog interfacing.
 
-- `CLK`: Clock from PLL feeding the CPU core.
-- `reset`: External reset to initialize CPU.
-- `OUT`: DAC analog output (digital simulation approximation).
-- `RV_TO_DAC[9:0]`: 10-bit digital output from CPU to DAC.
-- `OUT (real)`: Analog real-valued DAC output for simulation purposes.
+> **Special Feature:** The DAC modeled with real-number arithmetic is a unique educational aspect, allowing visualization of analog voltage levels directly computed from digital values.
 
 ---
 
@@ -131,7 +137,9 @@ cp /home/janadinisk/vsd/VLSI/VSDBabySoC/src/include/sandpiper_gen.vh /home/janad
 cd /home/janadinisk/vsd/VLSI/VSDBabySoC
 ```
 
-### Launch `yosys` and run:
+### Run synthesis commands inside `yosys` utility
+
+
 
 ```bash
 read_verilog src/module/vsdbabysoc.v
@@ -152,7 +160,14 @@ stat
 write_verilog -noattr /home/janadinisk/vsd/VLSI/vsdbabysoc_synth.v
 ```
 
-### Compile and simulate synthesized netlist:
+
+---
+
+### Post-synthesis Simulation
+
+Prepare files:
+
+
 
 Copy synthesized and dependency files:
 ```bash
@@ -178,18 +193,32 @@ Run and view waveform:
 vvp /home/janadinisk/vsd/VLSI/vsdbabysoc_synth.vvp
 gtkwave /home/janadinisk/vsd/VLSI/post_synth_sim.vcd
 ```
-
+> **Tip:** Post-synthesis simulation validates synthesis results and timing, ensuring your design behaves identically to the RTL model after optimization.
 ---
 
 ## Comparison: Pre- vs Post-synthesis
 
 Both pre-synthesis and post-synthesis simulations align well, confirming that the design works correctly after synthesis.
 
+> **Highlight:** The close match between pre- and post-synthesis simulation results proves design integrity and correctness, fundamental for production-quality SoC development.
+
 ---
 
-## Summary
+## Summary & Special Features
 
-This project demonstrates the full functional modeling and validation workflow of BabySoC—an educational system-on-chip integrating a RISC-V CPU, PLL clock generation, and DAC output. From high-level RTL simulation to gate-level post-synthesis verification, it helps bridge the gap between architectural theory and real hardware implementation with hands-on simulations in Icarus Verilog and GTKWave.
+BabySoC integrates key SoC concepts in a simplified, student-friendly package:
+
+- Minimalistic RISC-V CPU core in TL-Verilog enabling clean, understandable CPU design.
+- Use of a real-valued DAC model to bridge digital-analog signal representation with behavioral simulation.
+- PLL clock generator model simulating hardware timing control.
+- Complete hands-on workflow covering source cloning, code compilation, simulation, synthesis, and waveform analysis.
+- Clear modular design allowing focus on individual SoC blocks or full system integration.
+- Open-source approach facilitating experimentation and learning.
+- Encouragement to explore SoC modeling beyond theory, unlocking skills for real-world chip design.
+
+> **Pro Tip:** Regularly check signal waveforms and simulation logs to catch issues early. Use GTKWave’s measurement tools for timing analysis and signal verification.
+
+> **Final Note:** This project enables beginners and enthusiasts to transition smoothly from SoC theory to practical implementation and verification, a crucial step in embedded and VLSI careers.
 
 ---
 
