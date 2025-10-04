@@ -34,6 +34,7 @@ Confirm contents by listing files:
 ```bash
 ls
 ```
+![image]()
 > [!Tip]
 >  Keep your SoC projects organized in dedicated folders like `/home/janadinisk/vsd/VLSI/` to easily manage multiple designs and versions.
 
