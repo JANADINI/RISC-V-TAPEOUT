@@ -1,4 +1,4 @@
-# BabySoC: Fundamentals
+# SoC Design & BabySoC: Fundamentals
 
 A minimal, educational System-on-Chip platform for learning CPU-memory-peripheral interaction and functional modeling.
 
