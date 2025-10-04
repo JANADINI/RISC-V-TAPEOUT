@@ -82,14 +82,21 @@ Before simulating the CPU core, translate TL-Verilog into Verilog using:
 ```bash
 python3 -m sandpiper -i /home/janadinisk/vsd/VLSI/VSDBabySoC/src/module/rvmyth.tlv -o rvmyth.v --bestsv --noline -p verilog --outdir /home/janadinisk/vsd/VLSI/VSDBabySoC/src/module
 ```
-
+![image](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part-2/Pictures/Sandpiper.png)
 Example simulation command for `avsddac.v`:
 ```bash
 iverilog -o /home/janadinisk/vsd/VLSI/avsddac.vvp /home/janadinisk/vsd/VLSI/VSDBabySoC/src/module/avsddac.v /home/janadinisk/vsd/VLSI/tb_avsddac.v
 vvp /home/janadinisk/vsd/VLSI/avsddac.vvp
 gtkwave /home/janadinisk/vsd/VLSI/tb_avsddac.vcd
 ```
+![image](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part-2/Pictures/pre_syn_sim.png)
 
+Viewing DAC output in analog mode:
+The Steps:
+![image](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part-2/Pictures/Steps_for_Analog_signals.png)
+
+Analog GTKWave pre_syn_sim.vcd:
+![image](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part-2/Pictures/pre_syn_analog_sim.png)
 > [!Tip]
 >  Visualizing waveform outputs with GTKWave helps understand signal transitions and verify expected hardware behaviors.
 
