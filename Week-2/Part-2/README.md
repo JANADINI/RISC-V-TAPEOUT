@@ -34,7 +34,7 @@ Confirm contents by listing files:
 ```bash
 ls
 ```
-![image]()
+![image](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part-2/Pictures/VSDBabySoC_repo_clone.png)
 > [!Tip]
 >  Keep your SoC projects organized in dedicated folders like `/home/janadinisk/vsd/VLSI/` to easily manage multiple designs and versions.
 
