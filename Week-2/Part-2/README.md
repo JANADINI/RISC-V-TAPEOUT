@@ -308,7 +308,86 @@ found and reported 0 problems.
 
 yosys> 
 
+```yosys> opt
+
+13. Executing OPT pass (performing simple optimizations).
+
+13.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module avsddac.
+<suppressed ~16 debug messages>
+Optimizing module avsdpll.
+Optimizing module rvmyth.
+Optimizing module rvmyth_gen.
+Optimizing module vsdbabysoc.
+
+13.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\avsddac'.
+<suppressed ~12 debug messages>
+Finding identical cells in module `\avsdpll'.
+Finding identical cells in module `\rvmyth'.
+Finding identical cells in module `\rvmyth_gen'.
+<suppressed ~189 debug messages>
+Finding identical cells in module `\vsdbabysoc'.
+Removed a total of 67 cells.
+
+13.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \avsddac..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \avsdpll..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \rvmyth..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \rvmyth_gen..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \vsdbabysoc..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+13.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \avsddac.
+  Optimizing cells in module \avsdpll.
+  Optimizing cells in module \rvmyth.
+  Optimizing cells in module \rvmyth_gen.
+  Optimizing cells in module \vsdbabysoc.
+Performed a total of 0 changes.
+
+13.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\avsddac'.
+Finding identical cells in module `\avsdpll'.
+Finding identical cells in module `\rvmyth'.
+Finding identical cells in module `\rvmyth_gen'.
+Finding identical cells in module `\vsdbabysoc'.
+Removed a total of 0 cells.
+
+13.6. Executing OPT_RMDFF pass (remove dff with constant values).
+
+13.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \avsddac..
+Finding unused cells or wires in module \avsdpll..
+Finding unused cells or wires in module \rvmyth..
+Finding unused cells or wires in module \rvmyth_gen..
+Finding unused cells or wires in module \vsdbabysoc..
+Removed 0 unused cells and 83 unused wires.
+<suppressed ~2 debug messages>
+
+13.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module avsddac.
+Optimizing module avsdpll.
+Optimizing module rvmyth.
+Optimizing module rvmyth_gen.
+Optimizing module vsdbabysoc.
+
+13.9. Finished OPT passes. (There is nothing left to do.)
+
+yosys> 
 ```
+```bash
+
 ---
 
 ### Post-synthesis Simulation
