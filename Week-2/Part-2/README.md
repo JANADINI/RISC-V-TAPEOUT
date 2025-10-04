@@ -89,14 +89,7 @@ iverilog -o /home/janadinisk/vsd/VLSI/avsddac.vvp /home/janadinisk/vsd/VLSI/VSDB
 vvp /home/janadinisk/vsd/VLSI/avsddac.vvp
 gtkwave /home/janadinisk/vsd/VLSI/tb_avsddac.vcd
 ```
-![image](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part-2/Pictures/pre_syn_sim.png)
 
-Viewing DAC output in analog mode:
-The Steps:
-![image](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part-2/Pictures/Steps_for_Analog_signals.png)
-
-Analog GTKWave pre_syn_sim.vcd:
-![image](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part-2/Pictures/pre_syn_analog_sim.png)
 > [!Tip]
 >  Visualizing waveform outputs with GTKWave helps understand signal transitions and verify expected hardware behaviors.
 
@@ -120,7 +113,14 @@ Run simulation and view waveforms:
 vvp /home/janadinisk/vsd/VLSI/pre_synth_sim.vvp
 gtkwave /home/janadinisk/vsd/VLSI/pre_synth_sim.vcd
 ```
+![image](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part-2/Pictures/pre_syn_sim.png)
 
+Viewing DAC output in analog mode:
+The Steps:
+![image](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part-2/Pictures/Steps_for_Analog_signals.png)
+
+Analog GTKWave pre_syn_sim.vcd:
+![image](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part-2/Pictures/pre_syn_analog_sim.png)
 ---
 
 ## Signal Analysis
