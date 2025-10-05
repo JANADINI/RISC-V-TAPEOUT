@@ -1,76 +1,62 @@
 #  Week-2 Task:BabySoC Fundamentals & Functional Modelling
 
-### Objective  
-The aim of this task is to:  
-1. Build a solid understanding of **System-on-Chip (SoC) fundamentals**.  
-2. Practice **functional modelling** of BabySoC using Verilog simulation tools.  
-3. Analyze simulation results to verify BabySoC behaviour.  
+# BabySoC: Educational System-on-Chip Design Overview
 
+This project provides a structured introduction to System-on-Chip (SoC) design through a hands-on, simplified educational platform based on an open-source RISC-V CPU core. It aims to bridge the gap between theoretical concepts and practical hardware implementation, equipping learners with foundational knowledge and experience in SoC architecture, functional modeling, simulation, and synthesis.
+
+---
+
+## Learning Objectives
+
+- **Comprehensive Insight into SoC Architecture:**  
+  Gain a clear understanding of the essential components of a System-on-Chip, including processor cores, clock generation modules, memory subsystems, interconnects, and peripheral interfaces such as digital-to-analog converters.
+  
 ### Tools used
 - **Icarus Verilog (iverilog)** → Verilog compilation & simulation  
 - **GTKWave** → waveform analysis  
 
----
+- **Exposure to Design Challenges:**  
+  Explore common design considerations and challenges in SoC development, such as integration complexity, power management, performance optimization, security, and verification processes.
 
-## Part 1 – Theory (Conceptual Understanding)  :
+- **Practical Functional Modeling Skills:**  
+  Develop proficiency in hardware description languages like Verilog and TL-Verilog to model and simulate SoC components and their interactions, fostering an appreciation for behavioral design and verification methodologies.
 
-###  What is SoC?  
-A **System-on-Chip (SoC)** integrates CPU, memory, peripherals, and interconnect onto a **single chip**.  
-This reduces power, cost, and board size while improving performance and reliability.  
+- **End-to-End Design Flow Appreciation:**  
+  Understand the full design lifecycle from high-level behavioral modeling, through RTL design, simulation, logic synthesis, to gate-level verification, closely mirroring industry-standard SoC development practices.
 
-### Components of a SoC  
-- **CPU** → Executes instructions and processes data  
-- **Memory** → Stores instructions (ROM) and temporary data (RAM)  
-- **Peripherals** → Input/output controllers, timers, communication modules  
-- **Interconnect** → Buses / interconnect fabric that connects CPU, memory, and peripherals  
-
-###  Why BabySoC?  
-BabySoC is a **simplified learning model** of a real SoC.  
-It helps learners:  
-- Understand module interactions (CPU ↔ memory ↔ peripherals)  
-- Practice simulation without complex hardware overhead  
-- Build a foundation for RTL and physical design stages  
-
-### Role of Functional Modelling  
-- **Before RTL/Physical design**, functional modelling checks correctness of behaviour.  
-- Ensures modules interact as expected (reset, clock, dataflow).  
-- Saves design time by catching errors early.  
-
-Detailed notes are in [`Theory/SoC_Fundamentals.md`](./Theory/SoC_Fundamentals.md)  
+- **Analytical Competence Through Simulation:**  
+  Learn to perform detailed signal analysis and waveform inspection using simulation tools, critical for debugging and validating hardware functional correctness.
 
 ---
 
-##  Part 2 – Labs (Hands-on Functional Modelling)  :
+## Recommended Reading for Deep Understanding
 
-### Steps Performed  
-1. Clone the BabySoC project repo:
-   ```bash
-   iverilog -o baby_soc_sim BabySoC.v Testbench.v
+To gain comprehensive conceptual and practical knowledge, it is strongly recommended to review the following materials that complement this project:
 
+- [Week 2 Part 1: SoC Fundamentals and Architecture](https://vsd-lms-media.s3.us-east-1.amazonaws.com/week2-part1.pdf)  
+  This document covers foundational theory of SoC design including component overview, challenges, and types of SoCs.
 
-   
-3. Compile Verilog modules using Icarus Verilog:
+- [Week 2 Part 2: Hands-on Functional Modeling](https://vsd-lms-media.s3.us-east-1.amazonaws.com/week2-part2.pdf)  
+  This document provides step-by-step guidance on functional modeling, simulation, verification workflows, and synthesis concepts applied to BabySoC.
 
-   ```bash
-   iverilog -o baby_soc_sim BabySoC.v Testbench.v
-   vvp baby_soc_sim
-      
-4. Generate .vcd file for waveform analysis.
-
-5. Open .vcd in GTKWave:
-   ```bash
-   gtkwave dump.vcd
 ---
 
+## Project Significance
 
+BabySoC serves as an accessible and modular educational framework that enables students, researchers, and practitioners to delve into the intricacies of SoC design without the complexity of commercial designs. Its open-source nature encourages experimentation, customization, and deeper exploration of embedded system architectures and mixed-signal integration.
 
-# Observe and analyze:
+By guiding users through both architectural theory and practical implementation, BabySoC fosters a robust understanding that prepares learners for advanced studies or professional work in digital design, embedded systems, and semiconductor design engineering.
 
-- Reset operation
+---
 
-- Clocking behaviour
+## Summary
 
-- Dataflow between modules
+This repository encapsulates a fully functional, yet manageable, System-on-Chip implementation that combines a RISC-V CPU core, a phase-locked loop clock generator, and a digital-to-analog converter. The project emphasizes educational clarity, iterative design validation, and interdisciplinary knowledge spanning digital and analog domains. Users will gain hands-on experience in simulation, synthesis, and verification processes that are foundational in modern chip design workflows.
+
+BabySoC thus represents an ideal starting point for those seeking to build expertise in semiconductor design, offering both conceptual framework and practical tools to engage deeply with SoC development.
+
+---
+
 
 
 
