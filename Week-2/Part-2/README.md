@@ -43,35 +43,78 @@ ls
 
 Important files and folders inside `VSDBabySoC`:
 ```bash
-VSDBabySoC/
+/home/janadinisk/vsd/VLSI/VSDBabySoC/
+├── src/
+│ ├── include/ # Contains header files (*.vh) with macros and reusable parameters
+│ ├── module/ # Source files including Verilog and TL-Verilog for SoC modules
+│ │ ├── avsddac.v # Digital-to-Analog Converter module
+│ │ ├── avsdpll.v # PLL clock generator module
+│ │ ├── rvmyth.tlv # RVMYTH CPU core written in TL-Verilog
+│ │ ├── rvmyth.v # Verilog file generated from TLV conversion
+│ │ ├── vsdbabysoc.v # Top module integrating all SoC functions
+│ │ ├── testbench.v # Testbench for simulation runs
+│ │ └── clk_gate.v # Clock gating control module
+│ └── gls_model/ # Cell libraries and primitive gate definitions
+├── images/ # Images and diagrams for documentation
+├── Makefile # Makefile for build and simulation automation
 ├── LICENSE
-├── Makefile
-├── README.md
-├── images/ # Visualization assets
-└── src/
-├── module/ # Core Verilog and TL-Verilog design files
-│ ├── avsddac.v # 10-bit DAC module
-│ ├── avsdpll.v # PLL (clock generator)
-│ ├── rvmyth.tlv # RISC-V CPU core in TL-Verilog
-│ └── vsdbabysoc.v # Top-level integration module
-├── include/ # Header files for synthesis and compilation
-└── gls_model/ # Standard cells and primitives
+├── README.md # This documentation file
+├── output/              # Simulation outputs and compiled files
+└── compiled_tlv/        # Intermediate TL-Verilog compilation directory
+
 ```
 > [!Note]
 > Separation of source code, headers, and libraries promotes maintainability and simplifies simulation & synthesis workflows.
 
 ---
 
-## Verilog RTL Modules
+## RTL Modules in VSDBabySoC
 
-- **`avsdpll.v`**: Contains the Phase-Locked Loop module that stabilizes and generates clock signals, critical for synchronized CPU and peripheral operation.
-  
-- **`rvmyth.tlv`**: The heart of BabySoC, a small RISC-V CPU core described in TL-Verilog, providing instruction execution and data generation.
-  
-- **`vsdbabysoc.v`**: The top-level module connecting CPU, PLL, and DAC modules, illustrating typical SoC integration.
+The following are the primary RTL modules that compose the VSDBabySoC design:
+
+| Module Name      | Description                                               |
+|------------------|-----------------------------------------------------------|
+| `vsdbabysoc.v`   | Top-level SoC module integrating CPU, PLL, and DAC       |
+| `rvmyth.tlv` / `rvmyth.v` | RISC-V CPU core implemented in TL-Verilog (source) and its converted Verilog version |
+| `avsdpll.v`      | Phase-Locked Loop module responsible for clock generation |
+| `avsddac.v`      | 10-bit Digital-to-Analog Converter for analog interfacing |
+| `clk_gate.v`     | Clock gating module for controlling clock signals         |
+
+Additional supporting files such as testbenches are also included but are outside the core RTL hierarchy.
+
+All these modules are located under:
+
+`/home/janadinisk/vsd/VLSI/VSDBabySoC/src/module/`
+
+Together, these form the essential building blocks of the system, enabling the combined functionality of processing, clock management, and digital-to-analog conversion within the SoC.
 
 ---
 
+## TLV to Verilog Conversion Steps
+
+To convert the `rvmyth.tlv` TL-Verilog CPU core into Verilog in your workspace, follow these commands adjusted for your directory structure:
+Step 1: Ensure python3-venv and pip are installed
+```bash
+sudo apt update
+sudo apt install python3-venv python3-pip
+```
+Step 2: Create and activate a Python virtual environment in VSDBabySoC directory
+```bash
+cd /home/janadinisk/vsd/VLSI/VSDBabySoC/
+python3 -m venv sp_env
+source sp_env/bin/activate
+```
+Step 3: Install SandPiper-SaaS package inside the virtual environment
+```bash
+pip install pyyaml click sandpiper-saas
+```
+Step 4: Convert all TL-Verilog files (*.tlv) in src/module to Verilog
+```bash
+sandpiper-saas -i /home/janadinisk/vsd/VLSI/VSDBabySoC/src/module/*.tlv -o rvmyth.v --bestsv --noline -p verilog --outdir /home/janadinisk/vsd/VLSI/VSDBabySoC/src/module/
+```
+![image](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part-2/Pictures/Sandpiper.png)
+> [!Note]
+> Always activate the `sp_env` virtual environment before running the TL-Verilog conversion commands to ensure dependencies are resolved properly.
 
 ## Simulating Individual RTL Modules
 
@@ -82,13 +125,61 @@ Before simulating the CPU core, translate TL-Verilog into Verilog using:
 ```bash
 python3 -m sandpiper -i /home/janadinisk/vsd/VLSI/VSDBabySoC/src/module/rvmyth.tlv -o rvmyth.v --bestsv --noline -p verilog --outdir /home/janadinisk/vsd/VLSI/VSDBabySoC/src/module
 ```
-![image](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part-2/Pictures/Sandpiper.png)
 Example simulation command for `avsddac.v`:
+`tb_avsddac.v`:
 ```bash
-iverilog -o /home/janadinisk/vsd/VLSI/avsddac.vvp /home/janadinisk/vsd/VLSI/VSDBabySoC/src/module/avsddac.v /home/janadinisk/vsd/VLSI/tb_avsddac.v
-vvp /home/janadinisk/vsd/VLSI/avsddac.vvp
-gtkwave /home/janadinisk/vsd/VLSI/tb_avsddac.vcd
+`timescale 1ns / 1ps
+
+module tb_avsddac;
+
+    // Inputs
+    reg [9:0] D;
+    reg VREFH;
+    reg VREFL;
+
+    // Output
+    wire OUT;
+
+    // Instantiate the DUT
+    avsddac uut (
+        .OUT(OUT),
+        .D(D),
+        .VREFH(VREFH),
+        .VREFL(VREFL)
+    );
+
+    // Initialize signals
+    initial begin
+        D = 10'd0;
+        VREFL = 1'b0;
+        VREFH = 1'b1;
+    end
+
+    // Stimulus: simple counting for D
+    initial begin
+        repeat (20) begin
+            #10 D = D + 1;   // increment input
+        end
+        $finish;
+    end
+
+    // VCD dump for waveform viewing
+    initial begin
+        $dumpfile("tb_avsddac.vcd");
+        $dumpvars(0, tb_avsddac);
+    end
+
+endmodule
 ```
+```bash
+iverilog -o tb_avsddac.out -I src/include -I src/module src/module/avsddac.v tb_avsddac.v
+vvp tb_avsddac.out
+gtkwave tb_avsddac.vcd
+
+```
+```bash
+```
+![image]()
 
 > [!Tip]
 >  Visualizing waveform outputs with GTKWave helps understand signal transitions and verify expected hardware behaviors.
