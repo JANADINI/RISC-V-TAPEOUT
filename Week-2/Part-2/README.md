@@ -115,6 +115,7 @@ sandpiper-saas -i /home/janadinisk/vsd/VLSI/VSDBabySoC/src/module/*.tlv -o rvmyt
 ![image](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part-2/Pictures/Sandpiper.png)
 > [!Note]
 > Always activate the `sp_env` virtual environment before running the TL-Verilog conversion commands to ensure dependencies are resolved properly.
+> to exit use`deactivate`
 
 ## Simulating Individual RTL Modules
 
