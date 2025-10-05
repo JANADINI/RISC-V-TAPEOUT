@@ -1,6 +1,6 @@
 #  Week-2 Task:BabySoC Fundamentals & Functional Modelling
 
-# BabySoC: Educational System-on-Chip Design Overview
+## BabySoC: Educational System-on-Chip Design Overview
 
 This project provides a structured introduction to System-on-Chip (SoC) design through a hands-on, simplified educational platform based on an open-source RISC-V CPU core. It aims to bridge the gap between theoretical concepts and practical hardware implementation, equipping learners with foundational knowledge and experience in SoC architecture, functional modeling, simulation, and synthesis.
 
@@ -36,7 +36,7 @@ To gain comprehensive conceptual and practical knowledge, it is strongly recomme
 - [Week 2 Part 1: SoC Fundamentals and Architecture](https://github.com/JANADINI/RISC-V-TAPEOUT/tree/main/Week-2/Part-1)  
   This document covers foundational theory of SoC design including component overview, challenges, and types of SoCs.
 
-- [Week 2 Part 2: Hands-on Functional Modeling](https://vsd-lms-media.s3.us-east-1.amazonaws.com/week2-part2.pdf)  
+- [Week 2 Part 2: Hands-on Functional Modeling](https://github.com/JANADINI/RISC-V-TAPEOUT/tree/main/Week-2/Part-2)  
   This document provides step-by-step guidance on functional modeling, simulation, verification workflows, and synthesis concepts applied to BabySoC.
 
 ---
