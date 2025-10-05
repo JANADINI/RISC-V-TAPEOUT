@@ -635,12 +635,17 @@ Optimizing module vsdbabysoc.
 yosys> 
 ```
 </details>
+```bash
 
 abc -liberty src/lib/sky130_fd_sc_hd__tt_025C_1v80.lib -script +strash;scorr;ifraig;retime;{D};strash;dch,-f;map,-M,1,{D}
+```
+![image]()
+```bash
 flatten
 setundef -zero
 clean -purge
 rename -enumerate
+```
 ```bash
 stat
 ```
