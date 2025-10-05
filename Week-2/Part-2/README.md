@@ -186,7 +186,7 @@ gtkwave tb_avsddac.vcd
 ```
 **Waveform**:
 
-![image]()
+![image](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part-2/Pictures/tb_avsddac.vcd.png)
 
 > [!Tip]
 >  Visualizing waveform outputs with GTKWave helps understand signal transitions and verify expected hardware behaviors.
@@ -257,7 +257,7 @@ endmodule
 
 **Waveform**:
 
-![image]()
+![image](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part-2/Pictures/tb_avsdpll.vcd.png)
 
 *Simulation for`rvmyth.v`:*
 <details>
@@ -316,8 +316,8 @@ endmodule
 </details>
 
 **Waveform**:
-![image]()
 
+![image](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part-2/Pictures/tb_rvmyth.vcd.png)
 ---
 
 ## Pre-synthesis Simulation
