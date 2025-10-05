@@ -126,8 +126,12 @@ Before simulating the CPU core, translate TL-Verilog into Verilog using:
 python3 -m sandpiper -i /home/janadinisk/vsd/VLSI/VSDBabySoC/src/module/rvmyth.tlv -o rvmyth.v --bestsv --noline -p verilog --outdir /home/janadinisk/vsd/VLSI/VSDBabySoC/src/module
 ```
 Example simulation command for `avsddac.v`:
-`tb_avsddac.v`:
-```bash
+<details>
+    <summary>tb_avsddac.v:</summary>
+    
+```verilog
+
+    
 `timescale 1ns / 1ps
 
 module tb_avsddac;
@@ -171,6 +175,7 @@ module tb_avsddac;
 
 endmodule
 ```
+</details>
 ```bash
 iverilog -o tb_avsddac.out -I src/include -I src/module src/module/avsddac.v tb_avsddac.v
 vvp tb_avsddac.out
