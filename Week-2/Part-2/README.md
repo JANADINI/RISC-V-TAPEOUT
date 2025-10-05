@@ -397,22 +397,21 @@ Yosys:
 read_verilog src/module/vsdbabysoc.v
 read_verilog -I /home/janadinisk/vsd/VLSI/VSDBabySoC/src/include/ src/module/rvmyth.v
 read_verilog -I /home/janadinisk/vsd/VLSI/VSDBabySoC/src/include/ src/module/clk_gate.v
+```
+```bash
 read_liberty -lib src/lib/avsdpll.lib
 read_liberty -lib src/lib/avsddac.lib
 read_liberty -lib src/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-synth -top vsdbabysoc
-dfflibmap -liberty src/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-opt
-abc -liberty src/lib/sky130_fd_sc_hd__tt_025C_1v80.lib -script +strash;scorr;ifraig;retime;{D};strash;dch,-f;map,-M,1,{D}
-flatten
-setundef -zero
-clean -purge
-rename -enumerate
-stat
-write_verilog -noattr /home/janadinisk/vsd/VLSI/vsdbabysoc_synth.v
 ```
-
+It will looks like:
+![image]()
 ```bash
+synth -top vsdbabysoc
+```
+It will looks like
+<details>
+    <summary>Printing Statistics</summary>
+    ```shell
 Printing statistics.
 
 === avsddac ===
@@ -543,9 +542,21 @@ checking module vsdbabysoc..
 found and reported 0 problems.
 
 yosys> 
-
+```
+</details>
 ```bash
-yosys> opt
+dfflibmap -liberty src/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+![image]()
+```bash
+opt
+```
+It will looks like:
+<details>
+    <summary>OPT</summary>
+    ```shell
+    
+    yosys> opt
 
 13. Executing OPT pass (performing simple optimizations).
 
@@ -623,7 +634,21 @@ Optimizing module vsdbabysoc.
 
 yosys> 
 ```
+</details>
+
+abc -liberty src/lib/sky130_fd_sc_hd__tt_025C_1v80.lib -script +strash;scorr;ifraig;retime;{D};strash;dch,-f;map,-M,1,{D}
+flatten
+setundef -zero
+clean -purge
+rename -enumerate
 ```bash
+stat
+```
+It will looks like:
+<details>
+    <summary>VSDBabySoC
+    </summary>
+    ```shell
 17. Printing statistics.
 
 === vsdbabysoc ===
@@ -687,8 +712,15 @@ yosys>
 Dumping module `\vsdbabysoc'.
 
 yosys> 
-
 ```
+    
+</details>
+write_verilog -noattr /home/janadinisk/vsd/VLSI/vsdbabysoc_synth.v
+```
+
+
+
+
 
 ---
 
