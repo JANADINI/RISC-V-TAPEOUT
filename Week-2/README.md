@@ -33,7 +33,7 @@ This project provides a structured introduction to System-on-Chip (SoC) design t
 
 To gain comprehensive conceptual and practical knowledge, it is strongly recommended to review the following materials that complement this project:
 
-- [Week 2 Part 1: SoC Fundamentals and Architecture](https://vsd-lms-media.s3.us-east-1.amazonaws.com/week2-part1.pdf)  
+- [Week 2 Part 1: SoC Fundamentals and Architecture](https://github.com/JANADINI/RISC-V-TAPEOUT/tree/main/Week-2/Part-1)  
   This document covers foundational theory of SoC design including component overview, challenges, and types of SoCs.
 
 - [Week 2 Part 2: Hands-on Functional Modeling](https://vsd-lms-media.s3.us-east-1.amazonaws.com/week2-part2.pdf)  
