@@ -390,6 +390,7 @@ cd /home/janadinisk/vsd/VLSI/VSDBabySoC
 
 ### Run synthesis commands inside `yosys` utility
 Yosys:
+
 ![image](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part-2/Pictures/Yosys_tool.png)
 
 
@@ -404,7 +405,8 @@ read_liberty -lib src/lib/avsddac.lib
 read_liberty -lib src/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 ```
 It will looks like:
-![image]()
+
+![image](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part-2/Pictures/liberty_files.png)
 ```bash
 synth -top vsdbabysoc
 ```
