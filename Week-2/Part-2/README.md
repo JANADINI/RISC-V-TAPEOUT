@@ -547,7 +547,7 @@ yosys>
 ```bash
 dfflibmap -liberty src/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 ```
-![image]()
+![image](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part-2/Pictures/DFF_Cells.png)
 ```bash
 opt
 ```
@@ -639,7 +639,7 @@ yosys>
 
 abc -liberty src/lib/sky130_fd_sc_hd__tt_025C_1v80.lib -script +strash;scorr;ifraig;retime;{D};strash;dch,-f;map,-M,1,{D}
 ```
-![image]()
+![image](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part-2/Pictures/abc_results.png)
 ```bash
 flatten
 setundef -zero
