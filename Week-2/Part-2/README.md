@@ -262,11 +262,12 @@ endmodule
 ![image](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part-2/Pictures/tb_avsdpll.vcd.png)
 
 *Simulation for`rvmyth.v`:*
+
 <details>
-    <summary>tb_rvmyth.v</summary>
-    ```verilog
-    
-    `timescale 1ns/1ps
+<summary><b>tb_rvmyth.v</b></summary>
+
+```verilog
+`timescale 1ns/1ps
 
 module tb_rvmyth;
 
@@ -316,9 +317,10 @@ endmodule
 
 ```
 </details>
+
 **Waveform**:
 
-![image](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part%20-2/Pictures/tb_rvmyth.vcd.png)
+![image]([https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part%20-2/Pictures/tb_rvmyth.vcd.png](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part-2/Pictures/tb_rvmyth.vcd.png))
 
 
 ---
