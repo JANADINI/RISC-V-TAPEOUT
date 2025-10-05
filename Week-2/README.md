@@ -11,9 +11,10 @@ This project provides a structured introduction to System-on-Chip (SoC) design t
 - **Comprehensive Insight into SoC Architecture:**  
   Gain a clear understanding of the essential components of a System-on-Chip, including processor cores, clock generation modules, memory subsystems, interconnects, and peripheral interfaces such as digital-to-analog converters.
   
-### Tools used
-- **Icarus Verilog (iverilog)** → Verilog compilation & simulation  
-- **GTKWave** → waveform analysis  
+**Tools used**
+
+1.**Icarus Verilog (iverilog)** → Verilog compilation & simulation  
+2.**GTKWave** → waveform analysis  
 
 - **Exposure to Design Challenges:**  
   Explore common design considerations and challenges in SoC development, such as integration complexity, power management, performance optimization, security, and verification processes.
