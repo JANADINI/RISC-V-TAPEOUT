@@ -125,7 +125,7 @@ Before simulating the CPU core, translate TL-Verilog into Verilog using:
 ```bash
 python3 -m sandpiper -i /home/janadinisk/vsd/VLSI/VSDBabySoC/src/module/rvmyth.tlv -o rvmyth.v --bestsv --noline -p verilog --outdir /home/janadinisk/vsd/VLSI/VSDBabySoC/src/module
 ```
-Example simulation command for `avsddac.v`:
+*Example simulation command for `avsddac.v`:*
 <details>
     <summary>tb_avsddac.v:</summary>
     
@@ -176,6 +176,7 @@ module tb_avsddac;
 endmodule
 ```
 </details>
+
 ```bash
 
 iverilog -o tb_avsddac.out -I src/include -I src/module src/module/avsddac.v tb_avsddac.v
@@ -184,16 +185,19 @@ gtkwave tb_avsddac.vcd
 
 ```
 **Waveform**:
+
 ![image]()
 
 > [!Tip]
 >  Visualizing waveform outputs with GTKWave helps understand signal transitions and verify expected hardware behaviors.
 
-Repeat similar steps for the PLL (`avsdpll.v`) and CPU core (`rvmyth.v`) modules with their respective testbenches.
-Simulation command for`avsdpll.v`:
+## Repeat similar steps for the PLL (`avsdpll.v`) and CPU core (`rvmyth.v`) modules with their respective testbenches.
+*Simulation command for`avsdpll.v`:*
 <details>
 <summary>tb_avsdpll.v</summary>
+    
 ```verilog
+    
 `timescale 1ns / 1ps
 
 module tb_avsdpll;
@@ -250,8 +254,70 @@ module tb_avsdpll;
 endmodule
 ```
 </details>
+
+**Waveform**:
+
+![image]()
+
+*Simulation for`rvmyth.v`:*
+<details>
+    <summary>tb_rvmyth.v</summary>
+    ```verilog
+    
+    `timescale 1ns/1ps
+
+module tb_rvmyth;
+
+    // Inputs
+    reg CLK;
+    reg reset;
+
+    // 10-bit output
+    wire [9:0] OUT;
+
+    // Instantiate the rvmyth module
+    rvmyth uut (
+        .CLK(CLK),
+        .reset(reset),
+        .OUT(OUT)
+    );
+
+    // Clock generation: 10ns period -> 100 MHz
+    initial CLK = 0;
+    always #5 CLK = ~CLK;
+
+    // Test sequence
+    initial begin
+        // Initialize dump for waveform
+        $dumpfile("tb_rvmyth.vcd");
+        $dumpvars(0, tb_rvmyth);
+
+        // Reset sequence
+        reset = 1;
+        #20;
+        reset = 0;
+
+        // Wait some time for simulation
+        #200;
+
+        // Finish simulation
+        $finish;
+    end
+
+    // Optional monitor
+    initial begin
+        $display("Time\tCLK\tRESET\tOUT");
+        $monitor("%0t\t%b\t%b\t%0d", $time, CLK, reset, OUT);
+    end
+
+endmodule
+
+```
+</details>
+
 **Waveform**:
 ![image]()
+
 ---
 
 ## Pre-synthesis Simulation
