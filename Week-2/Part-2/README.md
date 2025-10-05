@@ -315,17 +315,24 @@ endmodule
 
 ```
 </details>
-
 **Waveform**:
 
-![image](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part-2/Pictures/tb_rvmyth.vcd.png)
+![image](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part%20-2/Pictures/tb_rvmyth.vcd.png)
+
+
 ---
 
 ## Pre-synthesis Simulation
 
+
 Compile the full BabySoC design in pre-synthesis mode:
 
 ```bash
+cd ~/vsd/VLSI/VSDBabySoC/
+
+mkdir -p output/pre_synth_sim
+
+
 iverilog -o /home/janadinisk/vsd/VLSI/pre_synth_sim.vvp -DPRE_SYNTH_SIM
 -I /home/janadinisk/vsd/VLSI/VSDBabySoC/src/include
 -I /home/janadinisk/vsd/VLSI/VSDBabySoC/src/module
@@ -337,6 +344,8 @@ Run simulation and view waveforms:
 vvp /home/janadinisk/vsd/VLSI/pre_synth_sim.vvp
 gtkwave /home/janadinisk/vsd/VLSI/pre_synth_sim.vcd
 ```
+**Waveform**:
+
 ![image](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part-2/Pictures/pre_syn_sim.png)
 
 Viewing DAC output in analog mode:
