@@ -320,7 +320,7 @@ endmodule
 
 **Waveform**:
 
-![image]([https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part%20-2/Pictures/tb_rvmyth.vcd.png](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part-2/Pictures/tb_rvmyth.vcd.png))
+![image](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part-2/Pictures/tb_rvmyth.vcd.png)
 
 
 ---
@@ -410,11 +410,10 @@ It will looks like:
 ```bash
 synth -top vsdbabysoc
 ```
-It will looks like
-<details>
-    <summary>Printing Statistics</summary>
-    ```shell
-Printing statistics.
+It will looks like:
+    
+  ```shell  
+`Printing statistics.
 
 === avsddac ===
 
@@ -544,8 +543,9 @@ checking module vsdbabysoc..
 found and reported 0 problems.
 
 yosys> 
-```
-</details>
+...
+
+
 ```bash
 dfflibmap -liberty src/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 ```
@@ -554,10 +554,8 @@ dfflibmap -liberty src/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 opt
 ```
 It will looks like:
-<details>
-    <summary>OPT</summary>
+
     ```shell
-    
     yosys> opt
 
 13. Executing OPT pass (performing simple optimizations).
@@ -635,8 +633,9 @@ Optimizing module vsdbabysoc.
 13.9. Finished OPT passes. (There is nothing left to do.)
 
 yosys> 
-```
-</details>
+...
+
+
 ```bash
 
 abc -liberty src/lib/sky130_fd_sc_hd__tt_025C_1v80.lib -script +strash;scorr;ifraig;retime;{D};strash;dch,-f;map,-M,1,{D}
@@ -652,9 +651,7 @@ rename -enumerate
 stat
 ```
 It will looks like:
-<details>
-    <summary>VSDBabySoC
-    </summary>
+
     ```shell
 17. Printing statistics.
 
@@ -719,9 +716,9 @@ It will looks like:
 Dumping module `\vsdbabysoc'.
 
 yosys> 
-```
-    
-</details>
+...
+
+```bash
 write_verilog -noattr /home/janadinisk/vsd/VLSI/vsdbabysoc_synth.v
 ```
 
@@ -734,9 +731,6 @@ write_verilog -noattr /home/janadinisk/vsd/VLSI/vsdbabysoc_synth.v
 ### Post-synthesis Simulation
 
 Prepare files:
-
-
-
 Copy synthesized and dependency files:
 ```bash
 cp /home/janadinisk/vsd/VLSI/VSDBabySoC/src/module/avsddac.v /home/janadinisk/vsd/VLSI
