@@ -177,20 +177,81 @@ endmodule
 ```
 </details>
 ```bash
+
 iverilog -o tb_avsddac.out -I src/include -I src/module src/module/avsddac.v tb_avsddac.v
 vvp tb_avsddac.out
 gtkwave tb_avsddac.vcd
 
 ```
-```bash
-```
+**Waveform**:
 ![image]()
 
 > [!Tip]
 >  Visualizing waveform outputs with GTKWave helps understand signal transitions and verify expected hardware behaviors.
 
 Repeat similar steps for the PLL (`avsdpll.v`) and CPU core (`rvmyth.v`) modules with their respective testbenches.
+Simulation command for`avsdpll.v`:
+<details>
+<summary>tb_avsdpll.v</summary>
+```verilog
+`timescale 1ns / 1ps
 
+module tb_avsdpll;
+
+   // Testbench signals
+   reg VCO_IN;
+   reg ENb_CP;
+   reg ENb_VCO;
+   reg REF;
+   wire CLK;
+
+   // Instantiate DUT
+   avsdpll uut (
+      .CLK(CLK),
+      .VCO_IN(VCO_IN),
+      .ENb_CP(ENb_CP),
+      .ENb_VCO(ENb_VCO),
+      .REF(REF)
+   );
+
+   // Initial block to set/reset signals
+   initial begin
+      VCO_IN = 0;
+      ENb_CP = 0;
+      ENb_VCO = 0;
+      REF = 0;
+
+      #10 ENb_VCO = 1;       // Enable VCO
+      #20 ENb_CP = 1;        // Enable Charge Pump
+
+      #500 $finish;          // Stop simulation after 500ns
+   end
+
+   // Generate REF clock (example: 100MHz -> period 10ns)
+   initial begin
+      forever begin
+         #5 REF = ~REF;       // Toggle every 5ns -> 100MHz
+      end
+   end
+
+   // Generate VCO_IN signal (optional)
+   initial begin
+      forever begin
+         #8.33 VCO_IN = ~VCO_IN; // 60MHz
+      end
+   end
+
+   // Dump waveform
+   initial begin
+      $dumpfile("tb_avsdpll.vcd");
+      $dumpvars(0, tb_avsdpll);
+   end
+
+endmodule
+```
+</details>
+**Waveform**:
+![image]()
 ---
 
 ## Pre-synthesis Simulation
