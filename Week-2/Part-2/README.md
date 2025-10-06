@@ -413,7 +413,7 @@ synth -top vsdbabysoc
 It will looks like:
     
   ```shell  
-`Printing statistics.
+Printing statistics.
 
 === avsddac ===
 
@@ -542,20 +542,23 @@ checking module rvmyth_gen..
 checking module vsdbabysoc..
 found and reported 0 problems.
 
-yosys> 
-...
-
+yosys>
+```
+## DFF
 
 ```bash
 dfflibmap -liberty src/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 ```
+
 ![image](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part-2/Pictures/DFF_Cells.png)
+
 ```bash
 opt
 ```
 It will looks like:
 
-    ```shell
+```shell
+
     yosys> opt
 
 13. Executing OPT pass (performing simple optimizations).
@@ -632,9 +635,10 @@ Optimizing module vsdbabysoc.
 
 13.9. Finished OPT passes. (There is nothing left to do.)
 
-yosys> 
-...
+yosys>
+```
 
+## abc
 
 ```bash
 
@@ -652,7 +656,8 @@ stat
 ```
 It will looks like:
 
-    ```shell
+```shell
+
 17. Printing statistics.
 
 === vsdbabysoc ===
@@ -716,8 +721,9 @@ It will looks like:
 Dumping module `\vsdbabysoc'.
 
 yosys> 
-...
+```
 
+## write
 ```bash
 write_verilog -noattr /home/janadinisk/vsd/VLSI/vsdbabysoc_synth.v
 ```
@@ -755,6 +761,9 @@ Run and view waveform:
 vvp /home/janadinisk/vsd/VLSI/vsdbabysoc_synth.vvp
 gtkwave /home/janadinisk/vsd/VLSI/post_synth_sim.vcd
 ```
+*Waveform*:
+
+![image]()
 > [!Tip]
 > Post-synthesis simulation validates synthesis results and timing, ensuring your design behaves identically to the RTL model after optimization.
 ---
@@ -762,6 +771,9 @@ gtkwave /home/janadinisk/vsd/VLSI/post_synth_sim.vcd
 ## Comparison: Pre- vs Post-synthesis
 
 Both pre-synthesis and post-synthesis simulations align well, confirming that the design works correctly after synthesis.
+*Waveform*:
+
+![image]()
 
 **Highlight**:
 
