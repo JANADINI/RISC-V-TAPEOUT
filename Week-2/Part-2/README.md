@@ -393,12 +393,14 @@ Yosys:
 
 ![image](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part-2/Pictures/Yosys_tool.png)
 
-
+Read the Verilog Files:
 ```bash
 read_verilog src/module/vsdbabysoc.v
 read_verilog -I /home/janadinisk/vsd/VLSI/VSDBabySoC/src/include/ src/module/rvmyth.v
 read_verilog -I /home/janadinisk/vsd/VLSI/VSDBabySoC/src/include/ src/module/clk_gate.v
 ```
+Now read the Libraries:
+
 ```bash
 read_liberty -lib src/lib/avsdpll.lib
 read_liberty -lib src/lib/avsddac.lib
@@ -407,6 +409,8 @@ read_liberty -lib src/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 It will looks like:
 
 ![image](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part-2/Pictures/liberty_files.png)
+
+Synthesis of Top module:
 ```bash
 synth -top vsdbabysoc
 ```
@@ -544,14 +548,14 @@ found and reported 0 problems.
 
 yosys>
 ```
-## DFF
+Map the DFF to the Yosys from the technology specific library file:
 
 ```bash
 dfflibmap -liberty src/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 ```
 
 ![image](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part-2/Pictures/DFF_Cells.png)
-
+Optimization of Netlist:
 ```bash
 opt
 ```
@@ -638,19 +642,43 @@ Optimizing module vsdbabysoc.
 yosys>
 ```
 
-## abc
+ABC Optimization Script Subcommand Reference
 
 ```bash
 
 abc -liberty src/lib/sky130_fd_sc_hd__tt_025C_1v80.lib -script +strash;scorr;ifraig;retime;{D};strash;dch,-f;map,-M,1,{D}
 ```
+
+
+| Subcommand     | Meaning                                                                                      |
+|----------------|---------------------------------------------------------------------------------------------|
+| `+strash`      | Structural hashing – eliminate duplicate logic.                                              |
+| `scorr`        | Sequential correction – fix sequential elements.                                             |
+| `ifraig`       | Iterative FRAIG – optimize combinational network.                                            |
+| `retime;{D}`   | Pipeline flip-flops (DFF) move around to optimize timing.                                    |
+| `strash`       | Structural hashing applied again to clean logic after retiming.                              |
+| `dch,-f`       | Depth-controlled hazard removal, optimize sequential logic.                                  |
+| `map,-M,1,{D}` | Map generic gates to library gates, inserting DFFs as needed for technology mapping.         |
+
 ![image](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part-2/Pictures/abc_results.png)
+ RTL Preprocessing :
 ```bash
+
 flatten
 setundef -zero
 clean -purge
 rename -enumerate
 ```
+
+
+| Command             | Meaning                                                                                       |
+|--------------------|------------------------------------------------------------------------------------------------|
+| `flatten`          | Collapse hierarchy – convert all modules into a single flat module to simplify optimization.  |
+| `setundef -zero`   | Set all undefined signals (`X`) to logic 0 to avoid unknowns during synthesis.               |
+| `clean -purge`     | Remove unused or redundant logic that is not connected to outputs.                             |
+| `rename -enumerate`| Rename all signals systematically (n1, n2, …) to avoid conflicts and produce clean netlist. |
+
+Print the Statistics of the current design:
 ```bash
 stat
 ```
@@ -722,15 +750,11 @@ Dumping module `\vsdbabysoc'.
 
 yosys> 
 ```
+Write the Optimized Design:
 
-## write
 ```bash
 write_verilog -noattr /home/janadinisk/vsd/VLSI/vsdbabysoc_synth.v
 ```
-
-
-
-
 
 ---
 
