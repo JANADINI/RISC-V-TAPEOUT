@@ -11,11 +11,11 @@ This guide provides step-by-step instructions to explore the functional modeling
 2. [Explore Repository Structure](#explore-repository-structure)
 3. [Verilog RTL Modules](#verilog-rtl-modules)
 4. [Simulating RTL Modules](#simulating-individual-rtl-modules)
-5. [Pre-synthesis Simulation](#pre-synthesis-simulation)
-6. [Signal Analysis](#signal-analysis)
-7. [Post-synthesis Simulation](#post-synthesis-simulation)
-8. [Comparison: Pre- vs Post-synthesis](#comparison-pre--vs-post-synthesis)
-9. [Summary & Special Features](#summary--special-features)
+6. [Pre-synthesis Simulation](#pre-synthesis-simulation)
+7. [Signal Analysis](#signal-analysis)
+8. [Post-synthesis Simulation](#post-synthesis-simulation)
+9. [Comparison: Pre- vs Post-synthesis](#comparison-pre--vs-post-synthesis)
+10. [Summary & Special Features](#summary--special-features)
 
 ---
 
