@@ -763,7 +763,7 @@ gtkwave /home/janadinisk/vsd/VLSI/post_synth_sim.vcd
 ```
 *Waveform*:
 
-![image]()
+![image](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part-2/Pictures/post_synth_sim.vcd.png)
 > [!Tip]
 > Post-synthesis simulation validates synthesis results and timing, ensuring your design behaves identically to the RTL model after optimization.
 ---
@@ -773,7 +773,7 @@ gtkwave /home/janadinisk/vsd/VLSI/post_synth_sim.vcd
 Both pre-synthesis and post-synthesis simulations align well, confirming that the design works correctly after synthesis.
 *Waveform*:
 
-![image]()
+![image](https://github.com/JANADINI/RISC-V-TAPEOUT/blob/main/Week-2/Part-2/Pictures/pre_synth_sim.vcd%20VS%20post_synth_sim.vcd.png)
 
 **Highlight**:
 
